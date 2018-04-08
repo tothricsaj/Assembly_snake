@@ -27,8 +27,29 @@ section .data
 ; The box drawing chars to window ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+	;top left corner
 	t_l_cor DB `\u250C`
 	t_l_len equ $ - t_l_cor
+
+	;top right corner
+	t_r_cor DB `\u2510`
+	t_r_len equ $ - t_r_cor
+
+	;bottom left corner
+	b_l_cor DB `\u2514`
+	b_l_len equ $ - b_l_cor
+
+	;bottom right corner
+	b_r_cor DB `\u2518`
+	b_r_len equ $ - b_r_cor
+
+	;vertical wall
+	ver_wall DB `\u2502`
+	ver_wall_l equ $ - ver_wall
+
+	;horizontal wall
+	hor_wall DB `\u2500`
+	hor_wall_l equ $ - hor_wall
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -49,7 +70,7 @@ write_ erase_disp, erase_l
 loop_:
 
 	write_ pos, pos_l
-	write_ t_l_cor, t_l_len
+	write_ hor_wall, hor_wall_l
 
 	read_ usr_in, 1
 
