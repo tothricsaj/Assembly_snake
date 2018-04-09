@@ -16,6 +16,8 @@
   pop eax
 %endmacro
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 %macro read_ 2
 	push eax
   push ebx
@@ -33,4 +35,20 @@
   pop ebx
   pop eax
 %endmacro
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+%macro str_con 4
+	push eax
+
+	mov eax, [%1]
+	mov [%3], eax
+	mov eax, [%2]
+	mov [%3+%4], eax
+
+	pop eax
+%endmacro
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
