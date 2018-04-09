@@ -14,6 +14,12 @@ section .data
 	pos DB 27, "[10;15H"
 	pos_l equ $ - pos
 
+	test_pos times 8 DB ' '
+	test_pos_l equ $ - test_pos
+
+	pos_y DB "[10;"
+	pos_x DB "11H"
+
 	erase_disp DB 27, "[2J"
 	erase_l equ $ - erase_disp
 
@@ -69,7 +75,16 @@ write_ erase_disp, erase_l
 
 loop_:
 
-	write_ pos, pos_l
+	; TODO Valami nem stimmel a kiosztással lesd meg.
+	; Csak szólok, hogy eléggé fáradt voltál mikor ezt
+	; csináltad, könnyen lehet, hogy egész egyszerű az 
+	; egész
+
+	str_con '', 27, test_pos, 0
+	str_con '', pos_y, test_pos, 1
+	str_con '', pos_x, test_pos, 5
+
+	write_ test_pos, test_pos_l
 	write_ hor_wall, hor_wall_l
 
 	read_ usr_in, 1
