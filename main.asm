@@ -2,6 +2,7 @@
 
 section .data
 	msg DB "Ez egy teszt szoveg", 0xA
+	;vertical wall
 	len equ $ - msg;
 
 	bye DB "Program vege", 0xA
@@ -11,6 +12,8 @@ section .data
 ; Here is the sequence chars to graphic ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+	escChr DB '27'
+
 	pos DB 27, "[10;15H"
 	pos_l equ $ - pos
 
@@ -19,6 +22,9 @@ section .data
 
 	pos_y DB "[10;"
 	pos_x DB "11H"
+
+	helpStr DB ''
+	hsl equ $ - helpStr
 
 	erase_disp DB 27, "[2J"
 	erase_l equ $ - erase_disp
@@ -49,7 +55,6 @@ section .data
 	b_r_cor DB `\u2518`
 	b_r_len equ $ - b_r_cor
 
-	;vertical wall
 	ver_wall DB `\u2502`
 	ver_wall_l equ $ - ver_wall
 
@@ -80,9 +85,9 @@ loop_:
 	; csináltad, könnyen lehet, hogy egész egyszerű az 
 	; egész
 
-	str_con '', 27, test_pos, 0
-	str_con '', pos_y, test_pos, 1
-	str_con '', pos_x, test_pos, 5
+	str_con helpStr, escChr, test_pos, 0
+	str_con helpStr, pos_y, test_pos, 1
+	str_con helpStr, pos_x, test_pos, 5
 
 	write_ test_pos, test_pos_l
 	write_ hor_wall, hor_wall_l
