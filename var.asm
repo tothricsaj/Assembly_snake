@@ -1,9 +1,14 @@
-msg DB "Ez egy teszt szoveg", 0xA
-;vertical wall
-len equ $ - msg;
-
 bye DB "Program vege", 0xA
 l_bye equ $ - bye
+
+winHorCount DB 0
+winVerCount DB 0
+
+xPosFirst DB '0'
+xPosSec DB '0'
+yPosFirst DB '0'
+yPosSec DB '0'
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Here is the sequence chars to graphic ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -59,9 +64,9 @@ b_r_cor DB `\u2518`
 b_r_len equ $ - b_r_cor
 
 ver_wall DB `\u2502`
-ver_wall_l equ $ - ver_wall
+ver_wall_len equ $ - ver_wall
 
 ;horizontal wall
 hor_wall DB `\u2500`
-hor_wall_l equ $ - hor_wall
+hor_wall_len equ $ - hor_wall
 
