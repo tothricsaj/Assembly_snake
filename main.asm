@@ -1,5 +1,16 @@
 %include 'macro.asm'
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Constatnts ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+XPOS_F equ 5
+XPOS_S equ 6
+YPOS_F equ 2
+YPOS_S equ 3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 section .data
 	msg DB "Ez egy teszt szoveg", 0xA
 	;vertical wall
@@ -14,11 +25,17 @@ section .data
 
 	escChr DB '27'
 
-	pos DB 27, "[10;15H"
+	buff times 7 DB ' '
+	buffL equ $ - buff
+
+	pos DB 27, "[10;29H"
 	pos_l equ $ - pos
 
-	test_pos times 8 DB ' '
+	test_pos times 2 DB ' '
 	test_pos_l equ $ - test_pos
+
+	posCoor times 9 DB ' '
+	posCoorL equ $ - posCoor
 
 	pos_y DB "[10;"
 	pos_x DB "11H"
@@ -66,6 +83,7 @@ section .data
 
 section .bss
 	usr_in resb 1
+	buffer resb 1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -85,12 +103,14 @@ loop_:
 	; csináltad, könnyen lehet, hogy egész egyszerű az 
 	; egész
 
-	str_con helpStr, escChr, test_pos, 0
-	str_con helpStr, pos_y, test_pos, 1
-	str_con helpStr, pos_x, test_pos, 5
+	str_con pos_y, pos_x, buff, 4
 
-	write_ test_pos, test_pos_l
-	write_ hor_wall, hor_wall_l
+	mov byte [pos+YPOS_F], '0'
+	mov byte [pos+YPOS_S], '7'
+	;posChg pos, '8', 6
+	;posChg pos, '2', 6
+	write_ pos, pos_l
+	write_ b_r_cor, b_r_len
 
 	read_ usr_in, 1
 
