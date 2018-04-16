@@ -1,5 +1,6 @@
 %include 'macro.asm'
 %include 'constants.asm'
+%include 'window.asm'
 
 section .data
 
@@ -23,7 +24,8 @@ write_ erase_disp, erase_l
 
 
 loop_:
-
+	
+	drawWin helpStr
 	mov byte [pos+YPOS_F], '0'
 	mov byte [pos+YPOS_S], '7'
 
