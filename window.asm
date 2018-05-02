@@ -1,9 +1,10 @@
-%macro drawWin 1
+%macro drawWin 0
 
 ;TODO The posChg is not in this code. Before I will use that
 ;I have to test the concat method with numbers.
 ;This loop is not tested, it may be works wrong. 
 ; COMMENTS HIGHTLY RECOMENDED NEEEEEEEEEEEEEEEEEEEEEEEEEEEEDDDD
+; THE MAIN PROBLEM THE ARGUMENTS. YOU SHOULD ADD AS PARAMETERS.
 
 	win_loop_:
 		cmp winVerCount, 0
