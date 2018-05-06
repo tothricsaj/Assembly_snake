@@ -30,7 +30,8 @@ write_ erase_disp, erase_l
 
 loop_:
 	
-	drawWin ;[helpStr]
+	drawWin [ver_wall], [ver_wall_len], [winVerCount], [winHorCount], [t_l_cor], [t_r_cor], [hor_wall]
+
 	mov byte [pos+YPOS_F], '0'
 	mov byte [pos+YPOS_S], '7'
 

@@ -1,60 +1,54 @@
-%macro drawWin 0
-
-;TODO The posChg is not in this code. Before I will use that
-;I have to test the concat method with numbers.
-;This loop is not tested, it may be works wrong. 
-; COMMENTS HIGHTLY RECOMENDED NEEEEEEEEEEEEEEEEEEEEEEEEEEEEDDDD
-; THE MAIN PROBLEM THE ARGUMENTS. YOU SHOULD ADD AS PARAMETERS.
+%macro drawWin 7
 
 	win_loop_:
-		cmp winVerCount, 0
+		cmp word %3, 0 ;winVerCount, 0
 		jz drwVerWall_
 
-		cmp winVerCount, 15
+		cmp word %3, 15 ;winVerCount, 15
 		jz drwVerWall_
 
 		jnz innerLoop_
 
 		drwVerWall_:
-			write_ ver_wall, ver_wall_len
+			write_ %1, %2;%1 ver_wall, %2 ver_wall_len
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		innerLoop_:
 			
-			cmp winHorCount, 1
+			cmp word %4, 1 ;winHorCount
 			jz drwLeftCor_
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-			cmp winHorCount, 20
+			cmp word %4, 20 ;winHorCount
 			jz drwRightCor_
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 			jmp drwHorWall_
 
 			backToTheInnerLoop_:
 			
-			inc winHorCount ;winHorCount++
+			inc word %4 ;winHorCount++
 
-			cmp winHorCount, 20
+			cmp word %4, 20 ;winHorCount
 			jz endInnerLoop_
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		jnz innerLoop_
 
 		endInnerLoop_:
 
-		inc winVerCount ;winVerCount++
+		inc word %3 ;winVerCount++
 
-		cmp winVerCount, 15
+		cmp word %3, 15 ;winVerCount
 		jz endWin_
 	jmp win_loop_
 
 drwLeftCor_:
-
+	write_ %5, 1
 jmp backToTheInnerLoop_
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 drwRightCor_:
-
+	write_ %6, 1
 jmp backToTheInnerLoop_
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 drwHorWall_:
-
+	write_ %7, 1
 jmp backToTheInnerLoop_
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 endWin_:		
