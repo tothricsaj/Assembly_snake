@@ -19,7 +19,7 @@ escChr DB '27'
 buff times 7 DB ' '
 buffL equ $ - buff
 
-pos DB 27, "[10;29H"
+pos DB 27, "[15;09H"
 pos_l equ $ - pos
 
 test_pos times 2 DB ' '

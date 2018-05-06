@@ -10,6 +10,7 @@
 section .data
 
 	%include 'var.asm'
+	testCor DB 0
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -30,13 +31,23 @@ write_ erase_disp, erase_l
 
 loop_:
 	
-	drawWin [ver_wall], [ver_wall_len], [winVerCount], [winHorCount], [t_l_cor], [t_r_cor], [hor_wall]
+;	drawWin [ver_wall], [ver_wall_len], [winVerCount], [winHorCount], [t_l_cor], [t_r_cor], [hor_wall]
 
-	mov byte [pos+YPOS_F], '0'
-	mov byte [pos+YPOS_S], '7'
+	inc byte [testCor]
+	mov eax, [testCor]
+	sub eax, '0'
+	mov ecx, eax
 
-	write_ pos, pos_l
-	write_ b_r_cor, b_r_len
+	mov eax, 4
+	mov ebx, 1
+	mov edx, 2
+	int 0x80
+
+	;mov byte [pos+YPOS_F], al
+	;mov byte [pos+YPOS_S], '7'
+
+	;write_ pos, pos_l
+	;write_ b_r_cor, b_r_len
 
 	read_ usr_in, 1
 

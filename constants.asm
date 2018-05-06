@@ -4,7 +4,7 @@
 
 XPOS_F equ 5
 XPOS_S equ 6
-YPOS_F equ 2
+YPOS_F equ 6
 YPOS_S equ 3
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
